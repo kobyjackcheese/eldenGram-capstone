@@ -3,8 +3,9 @@ from django.views import View
 from django.http import HttpResponse 
 from django.views.generic.base import TemplateView
 from .models import Build
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
+from django.urls import reverse
 
 
 class Home(TemplateView):
@@ -22,11 +23,24 @@ class BuildCreate(CreateView):
     model = Build
     fields = ['name', 'img', 'description']
     template_name = "build_create.html"
-    success_url = "/builds/"
+    def get_success_url(self):
+        return reverse('build_detail', kwargs={'pk': self.object.pk})
 
 class BuildDetail(DetailView):
     model = Build
     template_name = "build_detail.html"
+
+class BuildUpdate(UpdateView):
+    model = Build
+    fields = ['name', 'img', 'description']
+    template_name = "build_update.html"
+    def get_success_url(self):
+        return reverse('build_detail', kwargs={'pk': self.object.pk})
+    
+class BuildDelete(DeleteView):
+    model = Build
+    template_name = "build_delete_confirmation.html"
+    success_url = "/builds/"
     
 
 # class Weapon:
