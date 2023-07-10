@@ -3,6 +3,8 @@ from django.views import View
 from django.http import HttpResponse 
 from django.views.generic.base import TemplateView
 from .models import Build
+from django.views.generic.edit import CreateView
+from django.views.generic import DetailView
 
 
 class Home(TemplateView):
@@ -15,6 +17,16 @@ class BuildList(TemplateView):
         context = super().get_context_data(**kwargs)
         context["builds"] = Build.objects.all()
         return context
+    
+class BuildCreate(CreateView):
+    model = Build
+    fields = ['name', 'img', 'description']
+    template_name = "build_create.html"
+    success_url = "/builds/"
+
+class BuildDetail(DetailView):
+    model = Build
+    template_name = "build_detail.html"
     
 
 # class Weapon:
