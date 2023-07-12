@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views import View 
 from django.http import HttpResponse 
 from django.views.generic.base import TemplateView
-from .models import Build
+from .models import Build, Character
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from django.urls import reverse
@@ -41,6 +41,14 @@ class BuildDelete(DeleteView):
     model = Build
     template_name = "build_delete_confirmation.html"
     success_url = "/builds/"
+
+class CharacterList(TemplateView):
+    template_name = "character_list.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["characters"] = Character.objects.all() # Here we are using the model to query the database for us.
+        return context
     
 
 # class Weapon:

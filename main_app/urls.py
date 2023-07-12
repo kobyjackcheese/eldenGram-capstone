@@ -8,6 +8,7 @@ urlpatterns = [
     path('builds/<int:pk>/', views.BuildDetail.as_view(), name="build_detail"),
     path('builds/<int:pk>/update',views.BuildUpdate.as_view(), name="build_update"),
     path('builds/<int:pk>/delete',views.BuildDelete.as_view(), name="build_delete"),
+    path('characters/', views.CharacterList.as_view(), name="character_list"),
 
 
 ]
