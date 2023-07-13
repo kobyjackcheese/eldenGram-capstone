@@ -10,5 +10,6 @@ urlpatterns = [
     path('builds/<int:pk>/delete',views.BuildDelete.as_view(), name="build_delete"),
     path('characters/', views.CharacterList.as_view(), name="character_list"),
     path('characters/<int:pk>/', views.CharacterDetail.as_view(), name="character_detail"),
-
+    path('characters/<int:pk>/spells/<int:spell_pk>/', views.CharacterSpellAssoc.as_view(), name="character_spell_assoc"),
+    
 ]

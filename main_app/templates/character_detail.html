@@ -28,18 +28,54 @@
 </div>
 <h3>Spells</h3>
 <br><br>
+
+
+
+<span>
+    <div class="dropdown">
+        <div class="dropdown-trigger">
+            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>Add a Spell</span>
+                <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+            </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+                {% for spell in spells.all %}
+                <a href="{% url 'character_spell_assoc' character.pk spell.pk %}?assoc=add" class="dropdown-item">{{spell.name }}</a>
+
+                {% empty %}
+                <a></a>No spells Available</a>
+                </article>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</span>
+
+
+
 <div class="spell_container">
-    {% for spell in character.spells.all %}
+    {% for characterSpell in character.spells.all %}
 
     <div class="spell" style="width:50px;height:50px;">
         <span>{{forloop.counter}}</span>
         <!-- <span><b>{{spell.name}}</b></span> -->
-        <h7>{{spell.name}}</h7>
-        
-        
+        <h7>{{characterSpell.name}}</h7>
+
+
         <div class="spell_img">
-            <img src="{{spell.img}}" style="width:50px;height:50px;">
+            <img src="{{characterSpell.img}}" style="width:50px;height:50px;">
         </div>
+        <a href="{% url 'character_spell_assoc' character.pk characterSpell.pk %}?assoc=remove"
+            class="button is-danger is-outlined">
+            <span class="icon is-small">
+                <i class="fas fa-times"></i>
+            </span>
+        </a>
     </div>
 
     {% endfor %}

@@ -78,8 +78,8 @@ img {
 }
 
 .spell_container {
-  border: 1px solid #ffd700;
-  border-radius: 5px;
+  /* border: 1px solid #ffd700;
+  border-radius: 5px; */
   width: 600px;
   height: 275px;
   display: grid;

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View 
 from django.http import HttpResponse 
 from django.views.generic.base import TemplateView
@@ -47,7 +47,7 @@ class CharacterList(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["characters"] = Character.objects.all() # Here we are using the model to query the database for us.
+        context["characters"] = Character.objects.all()
         return context
     
 class CharacterDetail(DetailView):
@@ -55,8 +55,26 @@ class CharacterDetail(DetailView):
     template_name = "character_detail.html"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["spell"] = Character.objects.all()
+        context["characterSpell"] = Character.spells.objects.all()
         return context
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["spells"] = Spell.objects.all()
+        return context
+    
+
+    
+class CharacterSpellAssoc(View):
+
+    def get(self, request, pk, spell_pk):
+        assoc = request.GET.get("assoc")
+        if assoc == "remove":
+            Character.objects.get(pk=pk).spells.remove(spell_pk)
+        if assoc == "add":
+            Character.objects.get(pk=pk).spells.add(spell_pk)
+        return redirect('character_detail', pk=pk)
+
     
 
 
