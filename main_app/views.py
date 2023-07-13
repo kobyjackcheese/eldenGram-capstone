@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views import View 
 from django.http import HttpResponse 
 from django.views.generic.base import TemplateView
-from .models import Build, Character
+from .models import Build, Character, Spell
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from django.urls import reverse
@@ -50,6 +50,15 @@ class CharacterList(TemplateView):
         context["characters"] = Character.objects.all() # Here we are using the model to query the database for us.
         return context
     
+class CharacterDetail(DetailView):
+    model = Character
+    template_name = "character_detail.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["spell"] = Character.objects.all()
+        return context
+    
+
 
 # class Weapon:
 #     def __init__(self, name, img):

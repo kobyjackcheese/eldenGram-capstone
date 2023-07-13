@@ -1,5 +1,8 @@
 from django.db import models
 from django.core.validators import MaxValueValidator
+from django.core.exceptions import ValidationError
+
+
 
 # Create your models here.
 class Build(models.Model):
@@ -149,4 +152,9 @@ class Character(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def save(self, *args, **kwargs):
+        if self.spells.count() > 1:
+            raise ValidationError("Cannot assign more than 8 spells to a character.")
+        super().save(*args, **kwargs)
 

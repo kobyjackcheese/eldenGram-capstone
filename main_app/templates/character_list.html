@@ -6,7 +6,7 @@
 <h1 class="title pt-5">Trending Artists</h1>
 <div class="gallery">
   {% for character in characters %}
-  <a href="">
+  <a href="{% url 'character_detail' character.pk %}">
     <div class="card">
       <div class="card-image">
         <figure class="image is-square">
