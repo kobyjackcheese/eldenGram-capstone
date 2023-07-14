@@ -78,12 +78,29 @@ img {
 }
 
 .spell_container {
-  /* border: 1px solid #ffd700;
-  border-radius: 5px; */
-  width: 600px;
-  height: 275px;
+  height: 400px;
+  border: 1px solid #ffd700;
+  border-radius: 5px;
   display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    justify-content: center;
-    gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  justify-content: center;
+  gap: 30px;
+}
+
+.spell {
+  padding-bottom: 200px;
+}
+
+.weapon_container {
+  height: 400px;
+  border: 1px solid #ffd700;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  justify-content: center;
+  gap: 30px;
+}
+
+.weapon {
+  padding-bottom: 200px;
 }

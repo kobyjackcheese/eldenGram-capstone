@@ -11,5 +11,5 @@ urlpatterns = [
     path('characters/', views.CharacterList.as_view(), name="character_list"),
     path('characters/<int:pk>/', views.CharacterDetail.as_view(), name="character_detail"),
     path('characters/<int:pk>/spells/<int:spell_pk>/', views.CharacterSpellAssoc.as_view(), name="character_spell_assoc"),
-    
+    path('characters/<int:pk>/weapons/<int:weapon_pk>/', views.CharacterWeaponAssoc.as_view(), name="character_weapon_assoc"),
 ]

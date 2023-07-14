@@ -2,10 +2,12 @@ from django.shortcuts import render, redirect
 from django.views import View 
 from django.http import HttpResponse 
 from django.views.generic.base import TemplateView
-from .models import Build, Character, Spell
+from .models import Build, Character, Spell, Weapon
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from django.urls import reverse
+from django.core.exceptions import ValidationError
+
 
 
 class Home(TemplateView):
@@ -63,6 +65,16 @@ class CharacterDetail(DetailView):
         context["spells"] = Spell.objects.all()
         return context
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["characterWeapon"] = Character.weapons.objects.all()
+        return context
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["weapons"] = Weapon.objects.all()
+        return context
+    
 
     
 class CharacterSpellAssoc(View):
@@ -72,8 +84,28 @@ class CharacterSpellAssoc(View):
         if assoc == "remove":
             Character.objects.get(pk=pk).spells.remove(spell_pk)
         if assoc == "add":
-            Character.objects.get(pk=pk).spells.add(spell_pk)
+            try:
+                Character.objects.get(pk=pk).spells.add(spell_pk)
+            except ValidationError as e: 
+                print(e)
+                # raise ValidationError("Cannot assign more than 6 spells to a character.")
         return redirect('character_detail', pk=pk)
+    
+
+class CharacterWeaponAssoc(View):
+
+    def get(self, request, pk, weapon_pk):
+        assoc = request.GET.get("assoc")
+        if assoc == "remove":
+            Character.objects.get(pk=pk).weapons.remove(weapon_pk)
+        if assoc == "add":
+            try:
+                Character.objects.get(pk=pk).weapons.add(weapon_pk)
+            except ValidationError as e: 
+                print(e)
+                # raise ValidationError("Cannot assign more than 6 spells to a character.")
+        return redirect('character_detail', pk=pk)
+
 
     
 

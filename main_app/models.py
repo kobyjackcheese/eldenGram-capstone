@@ -154,7 +154,13 @@ class Character(models.Model):
         return self.name
     
     def save(self, *args, **kwargs):
-        if self.spells.count() > 1:
-            raise ValidationError("Cannot assign more than 8 spells to a character.")
+        if self.spells.count() > 6:
+            raise ValidationError("Cannot assign more than 6 spells to a character.")
+        if self.weapons.count() > 2:
+            raise ValidationError("Cannot assign more than 2 weapons to a character.")
+        
         super().save(*args, **kwargs)
+
+
+        
 

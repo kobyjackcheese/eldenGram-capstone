@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
+
+
 <div class="detail__img">
     <img src="{{character.img}}" alt="{{character.name}}" />
 </div>
@@ -29,8 +31,6 @@
 <h3>Spells</h3>
 <br><br>
 
-
-
 <span>
     <div class="dropdown">
         <div class="dropdown-trigger">
@@ -56,13 +56,11 @@
     </div>
 </span>
 
-
-
 <div class="spell_container">
     {% for characterSpell in character.spells.all %}
 
     <div class="spell" style="width:50px;height:50px;">
-        <span>{{forloop.counter}}</span>
+        <!-- <span>{{forloop.counter}}</span> -->
         <!-- <span><b>{{spell.name}}</b></span> -->
         <h7>{{characterSpell.name}}</h7>
 
@@ -80,4 +78,29 @@
 
     {% endfor %}
 </div>
+
+<div class="weapon_container">
+    {% for characterWeapon in character.weapons.all %}
+
+    <div class="weapon" style="width:50px;height:50px;">
+        <!-- <span>{{forloop.counter}}</span> -->
+        <!-- <span><b>{{spell.name}}</b></span> -->
+        <h7>{{characterWeapon.name}}</h7>
+
+
+        <div class="weapon_img">
+            <img src="{{characterWeapon.img}}" style="width:50px;height:50px;">
+        </div>
+        <a href="{% url 'character_weapon_assoc' character.pk characterWeapon.pk %}?assoc=remove"
+            class="button is-danger is-outlined">
+            <span class="icon is-small">
+                <i class="fas fa-times"></i>
+            </span>
+        </a>
+    </div>
+
+    {% endfor %}
+</div>
+
+
 {% endblock %}
