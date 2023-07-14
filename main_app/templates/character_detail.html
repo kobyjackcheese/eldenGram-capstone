@@ -44,10 +44,12 @@
         <div class="dropdown-menu" id="dropdown-menu" role="menu">
             <div class="dropdown-content">
                 {% for spell in spells.all %}
-                <a href="{% url 'character_spell_assoc' character.pk spell.pk %}?assoc=add" class="dropdown-item">{{spell.name }}</a>
+                <a href="{% url 'character_spell_assoc' character.pk spell.pk %}?assoc=add" class="dropdown-item">
+                    {{spell.name }}
+                </a>
 
                 {% empty %}
-                <a></a>No spells Available</a>
+                <a>No Spells Here</a>
                 </article>
 
                 {% endfor %}
@@ -59,7 +61,7 @@
 <div class="spell_container">
     {% for characterSpell in character.spells.all %}
 
-    <div class="spell" style="width:50px;height:50px;">
+    <div class="spell" style="height:50px;">
         <!-- <span>{{forloop.counter}}</span> -->
         <!-- <span><b>{{spell.name}}</b></span> -->
         <h7>{{characterSpell.name}}</h7>
@@ -79,10 +81,38 @@
     {% endfor %}
 </div>
 
+
+<span>
+    <div class="dropdown">
+        <div class="dropdown-trigger">
+            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>Add a Weapon</span>
+                <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+            </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+                {% for weapon in weapons.all %}
+                <a href="{% url 'character_weapon_assoc' character.pk weapon.pk %}?assoc=add" class="dropdown-item">{{weapon.name }}</a>
+
+                {% empty %}
+                <a>No Weapons Here</a>
+                </article>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</span>
+
+
+
 <div class="weapon_container">
     {% for characterWeapon in character.weapons.all %}
 
-    <div class="weapon" style="width:50px;height:50px;">
+    <div class="weapon" style="height:50px;">
         <!-- <span>{{forloop.counter}}</span> -->
         <!-- <span><b>{{spell.name}}</b></span> -->
         <h7>{{characterWeapon.name}}</h7>

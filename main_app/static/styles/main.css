@@ -92,7 +92,8 @@ img {
 }
 
 .weapon_container {
-  height: 400px;
+  height: 150px;
+  width: 600px;
   border: 1px solid #ffd700;
   border-radius: 5px;
   display: grid;
