@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import View 
 from django.http import HttpResponse 
 from django.views.generic.base import TemplateView
-from .models import Build, Character, Spell, Weapon
+from .models import Build, Character, Spell, Weapon, Talisman
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from django.urls import reverse
@@ -57,26 +57,11 @@ class CharacterDetail(DetailView):
     template_name = "character_detail.html"
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["characterSpell"] = Character.spells.objects.all()
-        return context
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
         context["spells"] = Spell.objects.all()
-        return context
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["characterWeapon"] = Character.weapons.objects.all()
-        return context
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
         context["weapons"] = Weapon.objects.all()
+        context["talismans"] = Talisman.objects.all()
         return context
-    
 
-    
 class CharacterSpellAssoc(View):
 
     def get(self, request, pk, spell_pk):
@@ -103,35 +88,26 @@ class CharacterWeaponAssoc(View):
                 Character.objects.get(pk=pk).weapons.add(weapon_pk)
             except ValidationError as e: 
                 print(e)
-                # raise ValidationError("Cannot assign more than 6 spells to a character.")
+                # raise ValidationError("")
         return redirect('character_detail', pk=pk)
 
 
     
+# @method_decorator(login_required, name='dispatch')
+# class ArtistList(TemplateView):
+#     template_name = "artist_list.html"
 
-
-# class Weapon:
-#     def __init__(self, name, img):
-#         self.name = name
-#         self.img = img
-
-# class Spell:
-#     def __init__(self, name, img):
-#         self.name = name
-#         self.img = img
-
-# class Stats:
-#     def __init__(self, vig, mind, end, str, dex, int, fai, arc):
-#         self.vig = vig
-#         self.mind = mind
-#         self.end = end
-#         self.str = str
-#         self.dex = dex
-#         self.int = int
-#         self.fai = fai
-#         self.arc = arc
-
-
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         name = self.request.GET.get("name")
+#         if name != None:
+#             context["artists"] = Artist.objects.filter(
+#                 name__icontains=name, user=self.request.user)
+#             context["header"] = f"Searching for {name}"
+#         else:
+#             context["artists"] = Artist.objects.filter(user=self.request.user)
+#             context["header"] = "Trending Artists"
+#         return context
 
         
         
