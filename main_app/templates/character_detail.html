@@ -43,6 +43,9 @@
         </div>
         <div class="dropdown-menu" id="dropdown-menu" role="menu">
             <div class="dropdown-content">
+                {% if character.spells.all.count >= 12 %}
+                <a>You can't have more than 12 spells</a>
+                {% else %}
                 {% for spell in spells.all %}
                 <a href="{% url 'character_spell_assoc' character.pk spell.pk %}?assoc=add" class="dropdown-item">
                     {{spell.name }}
@@ -52,7 +55,10 @@
                 <a>No Spells Here</a>
                 </article>
 
+                
                 {% endfor %}
+                {% endif %}
+                
             </div>
         </div>
     </div>
@@ -62,8 +68,6 @@
     {% for characterSpell in character.spells.all %}
 
     <div class="spell" style="height:50px;">
-        <!-- <span>{{forloop.counter}}</span> -->
-        <!-- <span><b>{{spell.name}}</b></span> -->
         <h7>{{characterSpell.name}}</h7>
 
 
@@ -94,14 +98,19 @@
         </div>
         <div class="dropdown-menu" id="dropdown-menu" role="menu">
             <div class="dropdown-content">
+                {% if character.weapons.all.count >= 2 %}
+                <a>You can't have more than 2 weapons</a>
+                {% else %}
                 {% for weapon in weapons.all %}
-                <a href="{% url 'character_weapon_assoc' character.pk weapon.pk %}?assoc=add" class="dropdown-item">{{weapon.name }}</a>
+                <a href="{% url 'character_weapon_assoc' character.pk weapon.pk %}?assoc=add"
+                    class="dropdown-item">{{weapon.name }}</a>
 
                 {% empty %}
                 <a>No Weapons Here</a>
                 </article>
 
                 {% endfor %}
+                {% endif %}
             </div>
         </div>
     </div>
@@ -113,8 +122,6 @@
     {% for characterWeapon in character.weapons.all %}
 
     <div class="weapon" style="height:50px;">
-        <!-- <span>{{forloop.counter}}</span> -->
-        <!-- <span><b>{{spell.name}}</b></span> -->
         <h7>{{characterWeapon.name}}</h7>
 
 
@@ -144,14 +151,17 @@
         </div>
         <div class="dropdown-menu" id="dropdown-menu" role="menu">
             <div class="dropdown-content">
+                {% if character.talismans.all.count >= 4 %}
+                <a>You can't have more than 4 talisnams</a>
+                {% else %}
                 {% for talisman in talismans.all %}
-                <a href="{% url 'character_talisman_assoc' character.pk talisman.pk %}?assoc=add" class="dropdown-item">{{talisman.name }}</a>
+                <a href="{% url 'character_talisman_assoc' character.pk talisman.pk %}?assoc=add"
+                    class="dropdown-item">{{talisman.name }}</a>
 
-                {% empty %}
-                <a>No talismans Here</a>
-                </article>
+                
 
                 {% endfor %}
+                {% endif %}
             </div>
         </div>
     </div>
@@ -161,8 +171,6 @@
     {% for characterTalisman in character.talismans.all %}
 
     <div class="weapon" style="height:50px;">
-        <!-- <span>{{forloop.counter}}</span> -->
-        <!-- <span><b>{{spell.name}}</b></span> -->
         <h7>{{characterTalisman.name}}</h7>
 
 
@@ -177,6 +185,186 @@
         </a>
     </div>
 
+    {% endfor %}
+</div>
+
+
+<span>
+    <div class="dropdown">
+        <div class="dropdown-trigger">
+            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>Add a Helmet</span>
+                <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+            </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+                {% if character.helmet.all.count >= 1 %}
+                <a>You can't have more than 1 helmet</a>
+                {% else %}
+                {% for helmet in helmets.all %}
+                <a href="{% url 'character_helmet_assoc' character.pk helmet.pk %}?assoc=add"
+                    class="dropdown-item">{{helmet.name }}</a>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</span>
+<span>
+    <div class="dropdown">
+        <div class="dropdown-trigger">
+            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>Add a Chestplate</span>
+                <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+            </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+                {% if character.chestplate.all.count >= 1 %}
+                <a>You can't have more than 1 chestplate</a>
+                {% else %}
+                {% for chestplate in chestplates.all %}
+                <a href="{% url 'character_chestplate_assoc' character.pk chestplate.pk %}?assoc=add"
+                    class="dropdown-item">{{chestplate.name }}</a>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</span>
+<span>
+    <div class="dropdown">
+        <div class="dropdown-trigger">
+            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>Add Gloves</span>
+                <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+            </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+                {% if character.gloves.all.count >= 1 %}
+                <a>You can't have more than 1 pair of gloves</a>
+                {% else %}
+                {% for gloves in gloves.all %}
+                <a href="{% url 'character_gloves_assoc' character.pk gloves.pk %}?assoc=add"
+                    class="dropdown-item">{{gloves.name }}</a>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</span>
+<span>
+    <div class="dropdown">
+        <div class="dropdown-trigger">
+            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>Add Leggings</span>
+                <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+            </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+                {% if character.leggings.all.count >= 1 %}
+                <a>You can't have more than 1 pair of leggings</a>
+                {% else %}
+                {% for leggings in leggings.all %}
+                <a href="{% url 'character_leggings_assoc' character.pk leggings.pk %}?assoc=add"
+                    class="dropdown-item">{{leggings.name }}</a>
+
+                {% empty %}
+                <a>No gloves Here</a>
+                </article>
+
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</span>
+
+
+
+<div class="armor_container">
+    {% for characterHelmet in character.helmet.all %}
+
+    <div class="helmet" style="height:50px;">
+        <h7>{{characterHelmet.name}}</h7>
+
+
+        <div class="helmet_img">
+            <img src="{{characterHelmet.img}}" style="width:50px;height:50px;">
+        </div>
+        <a href="{% url 'character_helmet_assoc' character.pk characterHelmet.pk %}?assoc=remove"
+            class="button is-danger is-outlined">
+            <span class="icon is-small">
+                <i class="fas fa-times"></i>
+            </span>
+        </a>
+        
+    </div>
+    {% endfor %}
+    {% for characterChestplate in character.chestplate.all %}
+
+    <div class="chestplate" style="height:50px;">
+        <h7>{{characterChestplate.name}}</h7>
+
+
+        <div class="chestplate_img">
+            <img src="{{characterChestplate.img}}" style="width:50px;height:50px;">
+        </div>
+        <a href="{% url 'character_chestplate_assoc' character.pk characterChestplate.pk %}?assoc=remove"
+            class="button is-danger is-outlined">
+            <span class="icon is-small">
+                <i class="fas fa-times"></i>
+            </span>
+        </a>
+        
+    </div>
+    {% endfor %}
+    {% for characterGloves in character.gloves.all %}
+
+    <div class="gloves" style="height:50px;">
+        <h7>{{characterGloves.name}}</h7>
+
+
+        <div class="gloves_img">
+            <img src="{{characterGloves.img}}" style="width:50px;height:50px;">
+        </div>
+        <a href="{% url 'character_gloves_assoc' character.pk characterGloves.pk %}?assoc=remove"
+            class="button is-danger is-outlined">
+            <span class="icon is-small">
+                <i class="fas fa-times"></i>
+            </span>
+        </a>
+        
+    </div>
+    {% endfor %}
+    {% for characterLeggings in character.leggings.all %}
+
+    <div class="leggings" style="height:50px;">
+        <h7>{{characterLeggings.name}}</h7>
+
+
+        <div class="leggings_img">
+            <img src="{{characterLeggings.img}}" style="width:50px;height:50px;">
+        </div>
+        <a href="{% url 'character_leggings_assoc' character.pk characterLeggings.pk %}?assoc=remove"
+            class="button is-danger is-outlined">
+            <span class="icon is-small">
+                <i class="fas fa-times"></i>
+            </span>
+        </a>
+        
+    </div>
     {% endfor %}
 </div>
 

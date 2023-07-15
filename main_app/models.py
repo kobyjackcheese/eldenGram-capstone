@@ -154,13 +154,6 @@ class Character(models.Model):
         return self.name
     
     def save(self, *args, **kwargs):
-        # if self.spells.count() > 6:
-        #     raise ValidationError("Cannot assign more than 6 spells to a character.")
-        # if self.weapons.count() > 2:
-        #     raise ValidationError("Cannot assign more than 2 weapons to a character.")
-        # if self.talismans.count() > 4:
-        #     raise ValidationError("Cannot assign more than 4 talismans to a character.")
-
         super().save(*args, **kwargs)
 
 

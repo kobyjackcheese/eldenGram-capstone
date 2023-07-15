@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import View 
 from django.http import HttpResponse 
 from django.views.generic.base import TemplateView
-from .models import Build, Character, Spell, Weapon, Talisman
+from .models import Build, Character, Spell, Weapon, Talisman, Helmet, Chestplate, Gloves, Leggings
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from django.urls import reverse
@@ -12,37 +12,6 @@ from django.core.exceptions import ValidationError
 
 class Home(TemplateView):
     template_name = "home.html"
-
-class BuildList(TemplateView):
-    template_name = "build_list.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["builds"] = Build.objects.all()
-        return context
-    
-class BuildCreate(CreateView):
-    model = Build
-    fields = ['name', 'img', 'description']
-    template_name = "build_create.html"
-    def get_success_url(self):
-        return reverse('build_detail', kwargs={'pk': self.object.pk})
-
-class BuildDetail(DetailView):
-    model = Build
-    template_name = "build_detail.html"
-
-class BuildUpdate(UpdateView):
-    model = Build
-    fields = ['name', 'img', 'description']
-    template_name = "build_update.html"
-    def get_success_url(self):
-        return reverse('build_detail', kwargs={'pk': self.object.pk})
-    
-class BuildDelete(DeleteView):
-    model = Build
-    template_name = "build_delete_confirmation.html"
-    success_url = "/builds/"
 
 class CharacterList(TemplateView):
     template_name = "character_list.html"
@@ -67,9 +36,10 @@ class CharacterDelete(DeleteView):
 
 class CharacterCreate(CreateView):
     model = Character
-    fields = ['name', 'img', 'description']
+    fields = ["name", "img", "description", "vigStat", "mindStat", "endStat", "strStat", "dexStat", "intStat", "faiStat", "arcStat"]
     template_name = "character_create.html"
     success_url = "/characters/"
+    Character.objects.get()
     
 class CharacterDetail(DetailView):
     model = Character
@@ -79,6 +49,10 @@ class CharacterDetail(DetailView):
         context["spells"] = Spell.objects.all()
         context["weapons"] = Weapon.objects.all()
         context["talismans"] = Talisman.objects.all()
+        context["helmets"] = Helmet.objects.all()
+        context["chestplates"] = Chestplate.objects.all()
+        context["gloves"] = Gloves.objects.all()
+        context["leggings"] = Leggings.objects.all()
         return context
 
 class CharacterSpellAssoc(View):
@@ -124,24 +98,64 @@ class CharacterTalismanAssoc(View):
                 print(e)
                 # raise ValidationError("")
         return redirect('character_detail', pk=pk)
-
-
     
-# @method_decorator(login_required, name='dispatch')
-# class ArtistList(TemplateView):
-#     template_name = "artist_list.html"
 
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         name = self.request.GET.get("name")
-#         if name != None:
-#             context["artists"] = Artist.objects.filter(
-#                 name__icontains=name, user=self.request.user)
-#             context["header"] = f"Searching for {name}"
-#         else:
-#             context["artists"] = Artist.objects.filter(user=self.request.user)
-#             context["header"] = "Trending Artists"
-#         return context
+class CharacterHelmetAssoc(View):
+
+    def get(self, request, pk, helmet_pk):
+        assoc = request.GET.get("assoc")
+        if assoc == "remove":
+            Character.objects.get(pk=pk).helmet.remove(helmet_pk)
+        if assoc == "add":
+            try:
+                Character.objects.get(pk=pk).helmet.add(helmet_pk)
+            except ValidationError as e: 
+                print(e)
+                # raise ValidationError("")
+        return redirect('character_detail', pk=pk)
+    
+
+class CharacterChestplateAssoc(View):
+
+    def get(self, request, pk, chestplate_pk):
+        assoc = request.GET.get("assoc")
+        if assoc == "remove":
+            Character.objects.get(pk=pk).chestplate.remove(chestplate_pk)
+        if assoc == "add":
+            try:
+                Character.objects.get(pk=pk).chestplate.add(chestplate_pk)
+            except ValidationError as e: 
+                print(e)
+                # raise ValidationError("")
+        return redirect('character_detail', pk=pk)
+    
+class CharacterGlovesAssoc(View):
+
+    def get(self, request, pk, gloves_pk):
+        assoc = request.GET.get("assoc")
+        if assoc == "remove":
+            Character.objects.get(pk=pk).gloves.remove(gloves_pk)
+        if assoc == "add":
+            try:
+                Character.objects.get(pk=pk).gloves.add(gloves_pk)
+            except ValidationError as e: 
+                print(e)
+                # raise ValidationError("")
+        return redirect('character_detail', pk=pk)
+    
+class CharacterLeggingsAssoc(View):
+
+    def get(self, request, pk, leggings_pk):
+        assoc = request.GET.get("assoc")
+        if assoc == "remove":
+            Character.objects.get(pk=pk).leggings.remove(leggings_pk)
+        if assoc == "add":
+            try:
+                Character.objects.get(pk=pk).leggings.add(leggings_pk)
+            except ValidationError as e: 
+                print(e)
+                # raise ValidationError("")
+        return redirect('character_detail', pk=pk)
 
         
         

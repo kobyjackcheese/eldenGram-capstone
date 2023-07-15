@@ -120,3 +120,33 @@ img {
 .talisman {
   padding-bottom: 200px;
 }
+
+.armor_container {
+  border: 1px solid #ffd700;
+  border-radius: 5px;
+  height: 650px;
+  width: 200px;
+  border-radius: 5px;
+  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+  
+
+}
+
+.helmet {
+  padding: 20px;
+  padding-bottom: 130px;
+}
+
+.chestplate {
+  padding: 20px;
+  padding-bottom: 130px;
+}
+
+.gloves {
+  padding: 20px;
+  padding-bottom: 130px;
+}
+
+.leggings {
+  padding: 20px;
+}
