@@ -132,5 +132,55 @@
     {% endfor %}
 </div>
 
+<span>
+    <div class="dropdown">
+        <div class="dropdown-trigger">
+            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>Add a Talisman</span>
+                <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+            </button>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+                {% for talisman in talismans.all %}
+                <a href="{% url 'character_talisman_assoc' character.pk talisman.pk %}?assoc=add" class="dropdown-item">{{talisman.name }}</a>
+
+                {% empty %}
+                <a>No talismans Here</a>
+                </article>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</span>
+
+<div class="talisman_container">
+    {% for characterTalisman in character.talismans.all %}
+
+    <div class="weapon" style="height:50px;">
+        <!-- <span>{{forloop.counter}}</span> -->
+        <!-- <span><b>{{spell.name}}</b></span> -->
+        <h7>{{characterTalisman.name}}</h7>
+
+
+        <div class="talisman_img">
+            <img src="{{characterTalisman.img}}" style="width:50px;height:50px;">
+        </div>
+        <a href="{% url 'character_talisman_assoc' character.pk characterTalisman.pk %}?assoc=remove"
+            class="button is-danger is-outlined">
+            <span class="icon is-small">
+                <i class="fas fa-times"></i>
+            </span>
+        </a>
+    </div>
+
+    {% endfor %}
+</div>
+
+
+
 
 {% endblock %}

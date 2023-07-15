@@ -78,17 +78,17 @@ img {
 }
 
 .spell_container {
-  height: 400px;
+  height: 300px;
   border: 1px solid #ffd700;
   border-radius: 5px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
   justify-content: center;
   gap: 30px;
 }
 
 .spell {
-  padding-bottom: 200px;
+  padding: 10px;
 }
 
 .weapon_container {
@@ -97,11 +97,26 @@ img {
   border: 1px solid #ffd700;
   border-radius: 5px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   justify-content: center;
   gap: 30px;
 }
 
 .weapon {
+  padding-bottom: 200px;
+}
+
+.talisman_container {
+  height: 150px;
+  /* width: 600px; */
+  border: 1px solid #ffd700;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  justify-content: center;
+  gap: 30px;
+}
+
+.talisman {
   padding-bottom: 200px;
 }

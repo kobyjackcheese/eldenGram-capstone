@@ -109,6 +109,21 @@ class CharacterWeaponAssoc(View):
                 print(e)
                 # raise ValidationError("")
         return redirect('character_detail', pk=pk)
+    
+
+class CharacterTalismanAssoc(View):
+
+    def get(self, request, pk, talisman_pk):
+        assoc = request.GET.get("assoc")
+        if assoc == "remove":
+            Character.objects.get(pk=pk).talismans.remove(talisman_pk)
+        if assoc == "add":
+            try:
+                Character.objects.get(pk=pk).talismans.add(talisman_pk)
+            except ValidationError as e: 
+                print(e)
+                # raise ValidationError("")
+        return redirect('character_detail', pk=pk)
 
 
     

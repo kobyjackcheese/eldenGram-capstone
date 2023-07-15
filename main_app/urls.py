@@ -12,8 +12,9 @@ urlpatterns = [
     path('characters/<int:pk>/', views.CharacterDetail.as_view(), name="character_detail"),
     path('characters/<int:pk>/spells/<int:spell_pk>/', views.CharacterSpellAssoc.as_view(), name="character_spell_assoc"),
     path('characters/<int:pk>/weapons/<int:weapon_pk>/', views.CharacterWeaponAssoc.as_view(), name="character_weapon_assoc"),
+    path('characters/<int:pk>/talismans/<int:talisman_pk>/', views.CharacterTalismanAssoc.as_view(), name="character_talisman_assoc"),
     path('characters/<int:pk>/update',views.CharacterUpdate.as_view(), name="character_update"),
     path('characters/<int:pk>/delete',views.CharacterDelete.as_view(), name="character_delete"),
     path('characters/new/', views.CharacterCreate.as_view(), name="character_create"),
-    
+
 ]
