@@ -52,6 +52,25 @@ class CharacterList(TemplateView):
         context["characters"] = Character.objects.all()
         return context
     
+class CharacterUpdate(UpdateView):
+    model = Character
+    fields = ['name', 'img', 'description']
+    template_name = "character_update.html"
+    success_url = "/characters/"
+    def get_success_url(self):
+        return reverse('character_detail', kwargs={'pk': self.object.pk})
+    
+class CharacterDelete(DeleteView):
+    model = Character
+    template_name = "character_delete_confirmation.html"
+    success_url = "/characters/"
+
+class CharacterCreate(CreateView):
+    model = Character
+    fields = ['name', 'img', 'description']
+    template_name = "character_create.html"
+    success_url = "/characters/"
+    
 class CharacterDetail(DetailView):
     model = Character
     template_name = "character_detail.html"
