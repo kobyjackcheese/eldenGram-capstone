@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="detail__img">
+    <img src="{{character.img}}" alt="{{character.name}}" />
+</div>
+<div class="detail__name">
+    <h1 class="title">{{character.name}}</h1>
+</div>
+<div class="detail__container">
+    <div class="buttons">
+        <a href="{% url 'character_detail' character.pk %}" class="button is-info">
+            <span class="icon">
+                <i class="fas fa-edit"></i>
+            </span>
+        </a>
+
+    </div>
+    <div class="detail__about">
+        <h4 class="title is-4">About</h4>
+        <p>{{character.description}}</p>
+        <br>
+        <br>
+    </div>
+</div>
+<h3>Spells</h3>
+<br><br>
+<h3 class="detail_text">Spells</h3>
+<div class="spell_detail_container">
+    {% for characterSpell in character.spells.all %}
+
+    <div class="spell_detail" style="height:50px;">
+        <h7>{{characterSpell.name}}</h7>
+
+
+        <div class="spell_detail_img">
+            <img src="{{characterSpell.img}}" style="width:50px;height:50px;">
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+<br>
+<br>
+
+<h3 class="detail_text">Weapons</h3>
+<div class="weapon_detail_container">
+    {% for characterWeapon in character.weapons.all %}
+
+    <div class="weapon" style="height:50px;">
+        <h7>{{characterWeapon.name}}</h7>
+
+
+        <div class="weapon_detail_img">
+            <img src="{{characterWeapon.img}}" style="width:50px;height:50px;">
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+<br>
+<br>
+
+
+<h3 class="detail_text">Talismans</h3>
+<div class="talisman_detail_container">
+    {% for characterTalisman in character.talismans.all %}
+
+    <div class="weapon_detail" style="height:50px;">
+        <h7>{{characterTalisman.name}}</h7>
+
+
+        <div class="talisman_detail_img">
+            <img src="{{characterTalisman.img}}" style="width:50px;height:50px;">
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+<br>
+<br>
+
+
+<h3 class="detail_text">Armor</h3>
+
+<div class="armor_detail_container">
+    {% for characterHelmet in character.helmet.all %}
+
+    <div class="helmet_detail" style="height:50px;">
+        <h7>{{characterHelmet.name}}</h7>
+
+
+        <div class="helmet_detail_img">
+            <img src="{{characterHelmet.img}}" style="width:50px;height:50px;">
+        </div>
+
+    </div>
+    {% endfor %}
+    {% for characterChestplate in character.chestplate.all %}
+
+    <div class="chestplate_detail" style="height:50px;">
+        <h7>{{characterChestplate.name}}</h7>
+
+
+        <div class="chestplate_detail_img">
+            <img src="{{characterChestplate.img}}" style="width:50px;height:50px;">
+        </div>
+
+    </div>
+    {% endfor %}
+    {% for characterGloves in character.gloves.all %}
+
+    <div class="gloves_detail" style="height:50px;">
+        <h7>{{characterGloves.name}}</h7>
+
+
+        <div class="gloves_detail_img">
+            <img src="{{characterGloves.img}}" style="width:50px;height:50px;">
+        </div>
+
+
+    </div>
+    {% endfor %}
+    {% for characterLeggings in character.leggings.all %}
+
+    <div class="leggings_detail" style="height:50px;">
+        <h7>{{characterLeggings.name}}</h7>
+
+
+        <div class="leggings_detail_img">
+            <img src="{{characterLeggings.img}}" style="width:50px;height:50px;">
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+
+
+
+
+{% endblock %}

@@ -54,6 +54,10 @@ class CharacterDetail(DetailView):
         context["gloves"] = Gloves.objects.all()
         context["leggings"] = Leggings.objects.all()
         return context
+    
+class BuildDetail(DetailView):
+    model = Character
+    template_name = "build_detail.html"
 
 class CharacterSpellAssoc(View):
 

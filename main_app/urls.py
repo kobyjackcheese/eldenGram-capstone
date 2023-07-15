@@ -15,5 +15,6 @@ urlpatterns = [
     path('characters/<int:pk>/update',views.CharacterUpdate.as_view(), name="character_update"),
     path('characters/<int:pk>/delete',views.CharacterDelete.as_view(), name="character_delete"),
     path('characters/new/', views.CharacterCreate.as_view(), name="character_create"),
+    path('builds/<int:pk>/', views.BuildDetail.as_view(), name="build_detail")
 
 ]

@@ -2,12 +2,18 @@ body {
   background-color: #121212;
   color: #ffffff;
   min-height: 100vh;
+  font-family: eldenFont;
 }
 
 h1,
 h2,
 h3 {
   color: #ffffff;
+  font-family: eldenFont;
+}
+@font-face {
+  font-family: eldenFont;
+  src: url(Mantinia-Regular.otf);
 }
 
 .container {
@@ -127,9 +133,6 @@ img {
   height: 650px;
   width: 200px;
   border-radius: 5px;
-  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
-  
-
 }
 
 .helmet {
@@ -149,4 +152,76 @@ img {
 
 .leggings {
   padding: 20px;
+}
+
+.spell_detail_container {
+  height: 200px;
+  border: 1px solid #ffd700;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  justify-content: center;
+  gap: 30px;
+}
+
+.spell_detail {
+  padding: 10px;
+}
+
+.weapon_detail_container {
+  height: 100px;
+  width: 600px;
+  border: 1px solid #ffd700;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  justify-content: center;
+  gap: 30px;
+}
+
+.weapon_detail {
+  padding-bottom: 200px;
+}
+
+.talisman_detail_container {
+  height: 100px;
+  /* width: 600px; */
+  border: 1px solid #ffd700;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  justify-content: center;
+  gap: 30px;
+}
+
+.armor_detail_container {
+  border: 1px solid #ffd700;
+  border-radius: 5px;
+  height: 450px;
+  width: 200px;
+  border-radius: 5px;
+}
+
+.helmet_detail {
+  padding: 20px;
+  padding-bottom: 80px;
+}
+
+.chestplate_detail {
+  padding: 20px;
+  padding-bottom: 80px;
+}
+
+.gloves_detail {
+  padding: 20px;
+  padding-bottom: 80px;
+}
+
+.leggings_detail {
+  padding: 20px;
+}
+
+.detail_text {
+  font-family: eldenFont;
+  font-size: 2rem;
 }
