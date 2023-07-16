@@ -55,7 +55,7 @@ class Weapon(models.Model):
 
     name = models.CharField(max_length=150)
     img = models.CharField(max_length=500)
-    WeaponType = models.ForeignKey(WeaponType, on_delete=models.CASCADE, related_name="spells")
+    WeaponType = models.ForeignKey(WeaponType, on_delete=models.CASCADE, related_name="weapons")
 
     def __str__(self):
         return self.name
@@ -153,8 +153,8 @@ class Character(models.Model):
     def __str__(self):
         return self.name
     
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     super().save(*args, **kwargs)
 
 
         

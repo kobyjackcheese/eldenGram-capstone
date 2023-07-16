@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import View 
 from django.http import HttpResponse 
 from django.views.generic.base import TemplateView
-from .models import Build, Character, Spell, Weapon, Talisman, Helmet, Chestplate, Gloves, Leggings
+from .models import Character, Spell, Weapon, Talisman, Helmet, Chestplate, Gloves, Leggings
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from django.urls import reverse
