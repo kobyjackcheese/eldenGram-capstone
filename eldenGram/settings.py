@@ -106,8 +106,8 @@ print(os.environ.get('DATABASE_URL'))
 DATABASES = {
     'default': dj_database_url.config(
         # Feel free to alter this value to suit your needs.
-        default='postgres://kobyjackcheese:U06iWHjeXpsB@ep-tiny-wave-436500.us-east-2.aws.neon.tech/EldenGram',
-        conn_max_age=600
+        default=os.environ['SECRET_KEY'],
+        # conn_max_age=600
     )
 }
 
