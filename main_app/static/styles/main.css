@@ -13,7 +13,7 @@ h3 {
 }
 @font-face {
   font-family: eldenFont;
-  src: url('./Mantinia-Regular.otf');
+  src: url("./Mantinia-Regular.otf");
 }
 
 .container {
