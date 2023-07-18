@@ -90,25 +90,25 @@ WSGI_APPLICATION = 'eldenGram.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#   'default': {
-#     'ENGINE': 'django.db.backends.postgresql',
-#     'NAME': 'EldenGram',
-#     'USER': os.environ['DB_USER'],
-#     'PASSWORD': os.environ['DB_PW'],
-#     'HOST': os.environ['DB_HOST'],
-#     'PORT': '5432',
-#     'OPTIONS': {'sslmode': 'require'},
-#   }
-# }
-
 DATABASES = {
-    'default': dj_database_url.config(
-        # Feel free to alter this value to suit your needs.
-        default=os.environ['SECRET_KEY'],
-        # conn_max_age=600
-    )
+  'default': {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': 'EldenGram',
+    'USER': os.environ['DB_USER'],
+    'PASSWORD': os.environ['DB_PW'],
+    'HOST': os.environ['DB_HOST'],
+    'PORT': '5432',
+    'OPTIONS': {'sslmode': 'require'},
+  }
 }
+
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         # Feel free to alter this value to suit your needs.
+#         default=os.environ['SECRET_KEY'],
+#         # conn_max_age=600
+#     )
+# }
 
 
 
