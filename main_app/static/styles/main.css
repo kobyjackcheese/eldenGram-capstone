@@ -50,16 +50,16 @@ p {
 }
 
 .detail__img {
-  position: absolute;
   justify-content: center;
-  left: 0;
-  top: 0;
+  height: 500px;
+  /* height: 100%; */
   width: 100%;
-  background-color: #ffffff;
-  overflow: hidden;
+  position: absolute;
+  left: 100;
+  top: 0;
 }
 
-.detail__img::after {
+/* .detail__img::after {
   content: "";
   background-image: linear-gradient(transparent 60%, #1f1f1f);
   position: absolute;
@@ -68,7 +68,7 @@ p {
   width: 100%;
   height: 100%;
   z-index: 5;
-}
+} */
 
 img {
   width: 100%;
@@ -117,7 +117,7 @@ img {
 }
 
 .talisman_container {
-  height: 150px;
+  height: 170px;
   /* width: 600px; */
   border: 1px solid #ffd700;
   border-radius: 5px;
@@ -188,7 +188,7 @@ img {
 }
 
 .talisman_detail_container {
-  height: 100px;
+  height: 140px;
   /* width: 600px; */
   border: 1px solid #ffd700;
   border-radius: 5px;
@@ -238,6 +238,9 @@ img {
   border-radius: 5px;
 }
 
+
+
+/* mobile styles */
 @media (max-width: 500px) {
   .description {
     font-size: .75rem;
@@ -294,6 +297,15 @@ img {
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     justify-content: center;
     gap: 30px;
+  }
+
+  .detail__img {
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
   }
 
 }
