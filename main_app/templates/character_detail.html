@@ -46,7 +46,7 @@
                 {% if character.spells.all.count >= 12 %}
                 <a>You can't have more than 12 spells</a>
                 {% else %}
-                {% for spell in spells.all %}
+                {% for spell in spells.all|dictsort:"name" %}
                 <a href="{% url 'character_spell_assoc' character.pk spell.pk %}?assoc=add" class="dropdown-item">
                     {{spell.name }}
                 </a>
@@ -101,7 +101,7 @@
                 {% if character.weapons.all.count >= 2 %}
                 <a>You can't have more than 2 weapons</a>
                 {% else %}
-                {% for weapon in weapons.all %}
+                {% for weapon in weapons.all|dictsort:"name" %}
                 <a href="{% url 'character_weapon_assoc' character.pk weapon.pk %}?assoc=add"
                     class="dropdown-item">{{weapon.name }}</a>
 
@@ -154,7 +154,7 @@
                 {% if character.talismans.all.count >= 4 %}
                 <a>You can't have more than 4 talisnams</a>
                 {% else %}
-                {% for talisman in talismans.all %}
+                {% for talisman in talismans.all|dictsort:"name" %}
                 <a href="{% url 'character_talisman_assoc' character.pk talisman.pk %}?assoc=add"
                     class="dropdown-item">{{talisman.name }}</a>
 
@@ -204,7 +204,7 @@
                 {% if character.helmet.all.count >= 1 %}
                 <a>You can't have more than 1 helmet</a>
                 {% else %}
-                {% for helmet in helmets.all %}
+                {% for helmet in helmets.all|dictsort:"name" %}
                 <a href="{% url 'character_helmet_assoc' character.pk helmet.pk %}?assoc=add"
                     class="dropdown-item">{{helmet.name }}</a>
                 {% endfor %}
@@ -228,7 +228,7 @@
                 {% if character.chestplate.all.count >= 1 %}
                 <a>You can't have more than 1 chestplate</a>
                 {% else %}
-                {% for chestplate in chestplates.all %}
+                {% for chestplate in chestplates.all|dictsort:"name" %}
                 <a href="{% url 'character_chestplate_assoc' character.pk chestplate.pk %}?assoc=add"
                     class="dropdown-item">{{chestplate.name }}</a>
                 {% endfor %}
@@ -252,7 +252,7 @@
                 {% if character.gloves.all.count >= 1 %}
                 <a>You can't have more than 1 pair of gloves</a>
                 {% else %}
-                {% for gloves in gloves.all %}
+                {% for gloves in gloves.all|dictsort:"name" %}
                 <a href="{% url 'character_gloves_assoc' character.pk gloves.pk %}?assoc=add"
                     class="dropdown-item">{{gloves.name }}</a>
                 {% endfor %}
@@ -276,7 +276,7 @@
                 {% if character.leggings.all.count >= 1 %}
                 <a>You can't have more than 1 pair of leggings</a>
                 {% else %}
-                {% for leggings in leggings.all %}
+                {% for leggings in leggings.all|dictsort:"name" %}
                 <a href="{% url 'character_leggings_assoc' character.pk leggings.pk %}?assoc=add"
                     class="dropdown-item">{{leggings.name }}</a>
 
