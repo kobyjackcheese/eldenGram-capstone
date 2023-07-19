@@ -15,6 +15,10 @@ h3 {
   font-family: eldenFont;
   src: url("./Mantinia-Regular.otf");
 }
+.description {
+  font-size: 1rem;
+  width: 450px;
+}
 
 .container {
   padding: 40px;
@@ -225,3 +229,12 @@ img {
   font-family: eldenFont;
   font-size: 2rem;
 }
+
+.stats {
+  position: absolute;
+    right: 0;
+  height: 200px;
+  width: 150px;
+  border-radius: 5px;
+}
+

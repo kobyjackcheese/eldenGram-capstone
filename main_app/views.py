@@ -39,7 +39,7 @@ class CharacterCreate(CreateView):
     fields = ["name", "img", "description", "vigStat", "mindStat", "endStat", "strStat", "dexStat", "intStat", "faiStat", "arcStat"]
     template_name = "character_create.html"
     success_url = "/characters/"
-    Character.objects.get()
+    # Character.objects.get()
     
 class CharacterDetail(DetailView):
     model = Character
