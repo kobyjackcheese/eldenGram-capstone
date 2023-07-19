@@ -20,4 +20,3 @@ Auth. users shouldnt be able to edit other users builds.
 searchability for the dropdowns to add items.
 
 css rework to make the site mobile friendly and re style everything to make it fit the elden ring style better.
-

@@ -238,3 +238,63 @@ img {
   border-radius: 5px;
 }
 
+@media (max-width: 500px) {
+  .description {
+    font-size: .75rem;
+    width: 100px;
+  }
+
+  .stats {
+    font-size: .75rem;
+    position: absolute;
+      right: 0;
+    height: 200px;
+    width: 150px;
+    border-radius: 5px;
+  }
+
+  .spell_detail_container {
+    font-size: .75rem;
+    height: 550px;
+    width:300px;
+    border: 1px solid #ffd700;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .spell_detail {
+    padding: 5px;
+    size: .5rem;
+  }
+
+  .weapon_detail_container {
+    height: 100px;
+    width: 300px;
+    border: 1px solid #ffd700;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  .weapon_detail {
+    padding-bottom: 200px;
+  }
+
+  .talisman_detail_container {
+    height: 350px;
+    width: 300px;
+    border: 1px solid #ffd700;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    justify-content: center;
+    gap: 30px;
+  }
+
+}
+
